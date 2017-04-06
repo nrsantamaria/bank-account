@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="js/scripts.js"></script>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <title>Bank Account</title>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h1>Welcome to the Best Credit Union Ever!</h1>
+      <h2>See you savings grow!</h2>
+    </div>
+    <div class="container">
+      <form id="bank-form">
+        <div id="new-account">
+          <h3>Register a new account:</h3><br>
+          <label for="name">Name: </label>
+          <input id="name" type="text">
+          <br><br>
+          <div id="initial-deposit-field">
+            <label for="initial-deposit">Intial Deposit: </label>
+            <input id="initial-deposit" type="number" min="10">
+          </div>
+          <br><br>
+        </div><!--bank-form close-->
+        <div id="deposit-or-withdraw">
+          <h3>Deposit or withdraw funds:</h3><br>
+          <label for="deposit-amount">Deposit-amount: </label>
+          <input id="deposit-amount" type="number" min="1">
+          <br><br>
+          <label for="withdrawal-amount">Withdrawal-amount: </label>
+          <input id="withdrawal-amount" type="number" min="1">
+          <br><br>
+        </div> <!--deposit-withdraw close-->
+        <button type="submit">Submit</button>
+      </form>
+      <div id="output">
+        <h4>Current Balance: </h4>
+      </div> <!--Output Close -->
+    </div> <!--Container Close -->
+  </body>
+</html>
