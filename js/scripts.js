@@ -4,11 +4,11 @@ function Bank(account1, account2) {
   this.account = [account1, account2];
 };
 
-function Account(name, balance, deposit, withdraw) {
+function Account(name, balance) {
   this.name = name;
   this.balance = balance;
-  this.deposit = deposit;
-  this.withdraw = withdraw;
+  this.deposit;
+  this.withdraw;
 };
 
 Bank.prototype.updateBalance = function (){
@@ -27,21 +27,26 @@ $(document).ready(function() {
     event.preventDefault();
     var nameInput = $("input#name").val();
     var initialDepositInput = parseInt($("#initial-deposit").val());
-    var depositInput = parseInt($("#deposit-amount").val());
-    var withdrawInput = parseInt($("#withdrawal-amount").val());
-
-    var accountOne = new Account(nameInput, initialDepositInput, depositInput, withdrawInput);
-    var accountTwo = new Account(nameInput, initialDepositInput, depositInput, withdrawInput);
+    var accountOne = new Account(nameInput, initialDepositInput);
+    var accountTwo = new Account(nameInput, initialDepositInput);
     var newBank = new Bank(accountOne, accountTwo);
 
     newBank.currentAccount = accountOne;
-    newBank.updateBalance();
 
     $("#output").show();
     $("#output").text(newBank.currentAccount.name + ", your account balance is: $" + newBank.currentAccount.balance);
-    // $("#new-account").hide();
-
     $("#deposit-or-withdraw").show();
-    this.reset();
+
+    //Click function to update account balance
+    $("#change-balance").click(function(){
+      var depositInput = parseInt($("#deposit-amount").val());
+      var withdrawInput = parseInt($("#withdrawal-amount").val());
+      newBank.currentAccount.deposit = depositInput;
+      newBank.currentAccount.withdraw = withdrawInput;
+      newBank.updateBalance();
+      $("#output").text(newBank.currentAccount.name + ", your account balance is: $" + newBank.currentAccount.balance);
+      $("#deposit-amount").val("");
+      $("#withdrawal-amount").val("")
+    });
   });
 });
